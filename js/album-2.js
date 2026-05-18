@@ -34,13 +34,13 @@ function findAlbum(){
         }
     }
 
-    document.getElementById("album-2").style.backgroundImage = "url('../media/music-elements/" + library[id].artwork + "')";
+    document.getElementById("album-2").style.backgroundImage = "url('D:\\peaktheatre\\elements\\music\\" + library[id].artwork + "')";
     document.getElementById("the-title").innerHTML = title + "<span class='artist'>" + library[id].artist + " <span style='font-size:0.7em'>•</span> " + library[id].year + "</span>";
     if(title.length > 32){
          document.getElementById("the-title").style.fontSize = "4.5rem";
          document.getElementById("the-title").innerHTML = title + "<span class='artist'>" + library[id].artist + " <span style='font-size:0.7em'>•</span> " + library[id].year + "</span>";
     }
-    document.getElementById("artwork").src = "../media/music-elements/" + library[id].artwork;
+    document.getElementById("artwork").src = "D:\\peaktheatre\\elements\\music\\" + library[id].artwork;
 
 }
 
