@@ -66,7 +66,7 @@ function populate() {
     for(let i=0;i<library.length;i++){
         const newItem = document.createElement('div');
         newItem.classList.add("music-library-item");
-        newItem.innerHTML = "<img src='../media/music-elements/" + library[i].artwork + "' class='album-artwork'><span class='title'>" + library[i].title + "<span class='artist'>" + library[i].artist + "</span></span>";
+        newItem.innerHTML = "<img src='D:\\peaktheatre\\elements\\music\\" + library[i].artwork + "' class='album-artwork'><span class='title'>" + library[i].title + "<span class='artist'>" + library[i].artist + "</span></span>";
         container.appendChild(newItem);
     }
 
@@ -89,7 +89,7 @@ function populate2(){
     for(let i=0;i<artists.length;i++){
         const newItem = document.createElement('div');
         newItem.classList.add("artist-item");
-        newItem.style.backgroundImage = "url('../media/music-elements/artists/" + artists[i].artwork + "')";
+        newItem.style.backgroundImage = "url('D:\\peaktheatre\\elements\\music\\artists\\" + artists[i].artwork + "')";
         newItem.innerHTML = "<span class='artist-name'>" + artists[i].name + "</span>";
         container2.appendChild(newItem);
     }
@@ -104,7 +104,7 @@ function active(){
     const items = document.getElementsByClassName("music-library-item");
     
     if(inAlbum == true){
-        document.getElementById("music-2").style.backgroundImage = "url('../media/music-elements/" + library[k].artwork + "')";
+        document.getElementById("music-2").style.backgroundImage = "url('D:\\peaktheatre\\elements\\music\\" + library[k].artwork + "')";
     }else{
         document.getElementById("music-2").style.backgroundImage = "url('../media/elements/v/bg-gradient.jpg')";
     }
