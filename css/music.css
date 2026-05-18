@@ -1,0 +1,769 @@
+* {
+    font-family: sans-serif;
+}
+
+body{
+    overflow: hidden;
+    cursor: none;
+}
+
+body#albums{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#the-albums{
+    display:block;
+    font-size:18rem;
+    line-height:1;
+    font-weight:bold;
+    color:white;
+    text-transform:uppercase;
+    padding: 0px 150px;
+}
+
+body#listen{
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+body#filters{
+    margin: 50px;
+    margin-top: 0px;
+    transition: 1s;
+}
+
+#music{
+    margin: 0;
+    transform: translateY(0px);
+    transition: 0.5s;
+}
+
+#wrapper{
+    transition: 0.5s;
+}
+
+.menu-wrapper{
+    position: fixed;
+    left: 0;
+    top: -110px;
+    width: 100%;
+    height: 110vh;
+    background: rgba(0,0,0,0);
+    backdrop-filter: blur(0px);
+    transition: 1s;
+}
+
+.menu-wrapper.active{
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+}
+
+.menu-wrapper .menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 110vh;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.3));
+    transform: translateX(400px);
+    transition: 1s;
+}
+
+.menu-wrapper.active .menu{
+    transform: translateX(0px);
+}
+
+.menu-wrapper .menu-item{
+    display: block;
+    padding: 15px 25px;
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+}
+
+.menu-wrapper .menu-item:first-child{
+    margin-top: 100px;
+}
+
+.menu-wrapper .menu-item.active{
+    background: white;
+}
+
+.main-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: rgb(150,150,150,1);
+    backdrop-filter: blur(30px);
+    transition: 15s;
+}
+
+.main-wrapper #artwork{
+    display: block;
+    height: 65vh;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50px;
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.3));
+    transform: translateY(-10px);
+}
+
+.main-wrapper .details{
+    display: block;
+    width: 70%;
+}
+
+.main-wrapper .details .timeline-full{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 15px;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 7px;
+}
+
+.timeline{
+    display: block;
+    width: 0%;
+    height: 15px;
+    background: rgb(44,112,244);
+    border-radius: 7px 0px 0px 7px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.timespot{
+    position: absolute;
+    left: 0%;
+    width: 6px;
+    height: 30px;
+    background: white;
+    backdrop-filter: blur(10px);
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.library-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    transform: translateY(-200px);
+    transition: 1s;
+}
+
+.library-item{
+    display: inline-block;
+    width: 17%;
+    margin: 25px;
+    vertical-align: top !important;
+    transform: scale(1.0);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.library-item.active{
+    transform: scale(1.1);
+}
+
+.library-item .artwork{
+    display: inline-block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 40px;
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.2));
+    transition: 0.5s;
+}
+
+.library-item.active .artwork{
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.7));
+    border-radius: 30px;
+}
+
+.library-item .details{
+    display: block;
+    margin-top: 15px;
+    height: 70px;
+}
+
+.library-item .details .title{
+    display: block;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.library-item .details .artist{
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.the-album{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+}
+
+.the-album #artwork{
+    display: block;
+    width: 48%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 75px;
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.5));
+}
+
+.the-album .content{
+    position: relative;
+    transform: translateY(-150px);
+    display: block;
+    width: 50%;
+    min-height: 50vh;
+    margin-left: 50px;
+}
+
+.the-album .content #title{
+    display: block;
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.the-album .content #title #artist{
+    display: block;
+    font-size: 0.5em;
+    font-weight: 300;
+}
+
+.the-album .content .action-menu{
+    position: relative;
+    display: block;
+    transform: translateY(-30px);
+}
+
+.the-album .content .action-menu .action-menu-item{
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: rgb(44,112,244);
+    color: white;
+    border-radius: 15px;
+    border: solid 5px rgb(44,112,244);
+    padding: 13px 18px;
+    transform: scale(0.9);
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.1));
+    transition: 0.5s;
+}
+
+.the-album .content .action-menu .action-menu-item.active{
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.25));
+    border: solid 5px rgb(21,85,205);
+    background: rgb(21,85,205);
+    transform: scale(1.0);
+}
+
+.the-album .content .track-list{
+    position: absolute;
+    display: block;
+    transform: translateY(-5px);
+    width: 800px;
+    height: 300px;
+    z-index: 10;
+    transition: 0.5s;
+}
+
+.gen{
+    position: relative;
+    background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1), rgba(255,255,255,1));
+
+    z-index: 1000;
+}
+
+.the-album .content .track-list .track{
+    display: block;
+    padding: 12px;
+    font-size: 1.3rem;
+    line-height: 1;
+    font-weight: bold;
+    background: white;
+    border-radius: 0px;
+    border: solid 3px rgba(0,0,0,0);
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0));
+    transform: scale(1.0);
+    margin-bottom: 0px;
+    margin-top: 0px;
+    transition: transform 0.5s, margin 0.5s;
+}
+
+.the-album .content .track-list .track.even{
+    background: #f1f2f4;
+}
+
+.the-album .content .track-list .track.active{
+    background: rgb(44,112,244);
+    color: white;
+    /*border-radius: 20px;*/
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.25));
+    border-radius: 10px;
+    z-index: 500;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.song{
+    position: absolute;
+    left: 0;
+    top: 74.75vh;
+    width: 100%;
+    min-height: 50px;
+    text-align: center;
+}
+
+.song #title{
+    display: block;
+    color: white;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.song #details{
+    display: block;
+    color: white;
+    font-size: 1.35rem;
+    line-height: 1;
+    font-weight: 300;
+    margin-top: 15px;
+}
+
+.controls{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 0px;
+    top: 83.5vh;
+    width: 100%;
+}
+
+.control-item{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+    margin-left: 7px;
+    margin-right: 7px;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: black;
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+
+.control-item.active{
+    background: white;
+    transform: scale(1.1);
+}
+
+
+.timecode-wrapper{
+    position: absolute;
+    left: 0;
+    top: 93.5vh;
+    width: 100%;
+    text-align: center;
+}
+
+#the-time{
+    display: block;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cover{
+    position: absolute;
+    left: 50vw;
+    top: 79vh;
+    width: 45vw;
+    height: 260px;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1));
+    z-index: 12000;
+}
+
+.cover.sec{
+    top: 0;
+    background: white;
+    height: 210px;
+}
+
+.filter-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: -190px;
+}
+
+#filters h1, #music h1{
+    font-size: 10rem;
+    transform: translateY(-80px);
+}
+
+#music h1{
+    transform: translate(50px, -80px) !important;
+}
+
+.artist-item{
+    display: inline-block;
+    width: 13%;
+    text-align: center;
+    margin: 20px;
+    transform: scale(1.0);
+    transition: 0.4s;
+}
+
+.artist-item.active{
+    transform: scale(1.1);
+}
+
+.artist-item img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 100%;
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0));
+    transition: 0.4s;
+}
+
+.artist-item.active img{
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.6));
+}
+
+.artist-item .name{
+    display: block;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.genre-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background: red;
+    margin: 20px;
+    font-size: 1.75rem;
+    line-height: 1;
+    font-weight: bold;
+    color: white;
+    transform: scale(1.0);
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0));
+    transition: 0.4s;
+}
+
+.genre-item.active{
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,35));
+    transform: scale(1.1);
+}
+
+#music-2{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    transition: 1s;
+}
+
+#album-2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.music-library{
+    position: absolute;
+    display: none;
+    width: 20000px;
+    transform: translateX(100vw);
+    transition: 0s;
+}
+
+.artist-library{
+    position: absolute;
+    display: none;
+    width: 20000px;
+    transform: translateX(100vw);
+    transition: 1s;
+}
+
+.music-library-item{
+    display: inline-block;
+    width: 450px;
+    margin: -45px;
+    vertical-align: middle;
+    perspective: 500px;
+    transform: scale(0.8);
+    transition: 1s;
+}
+
+.artist-item{
+    position: relative;
+    display: inline-block;
+    width: 600px;
+    aspect-ratio: 1/1;
+    border-radius: 40px;
+    margin: 50px;
+    vertical-align: middle;
+    background-size: cover;
+    background-position: center;
+    transition: 1s;
+}
+
+.artist-item .artist-name{
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    bottom: 0;
+    background: white;
+    color: block;
+    padding: 35px 60px;
+    border-radius: 0px 40px 0px 40px;
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.music-library-item .album-artwork{
+    display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 40px;
+    transform: rotateY(20deg);
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.25));
+    transition: 1s;
+}
+
+.music-library-item .title{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    transition: 1s;
+}
+
+.music-library-item .title .artist{
+    display: block;
+    font-size: 0.5em;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.music-library-item.active{
+    transform: scale(1.8);
+    margin: 220px;
+}
+
+.music-library-item.active .album-artwork{
+    transform: rotateY(0deg);
+}
+
+.music-library-item.active .title{
+    opacity: 1;
+}
+
+.music-library-item.previous .album-artwork{
+    transform: rotateY(-20deg);
+}
+
+.blur-background{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,1);
+    backdrop-filter: blur(20px);
+    transition: 1.5s;
+}
+
+#album-2 #the-title{
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 6rem;
+    line-height: 1;
+    color: white;
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.25));
+    text-transform: uppercase;
+    opacity: 0;
+    transition: 2s;
+}
+
+#album-2 #the-title .artist{
+    display: block;
+    font-size: 0.5em;
+    margin-top: 5px;
+    font-weight: normal;
+    text-transform: none;
+}
+
+#album-2 #artwork{
+    position: absolute;
+    left: 12vw;
+    top: 25vh;
+    height: 60vh;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 30px;
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.7));
+}
+
+#cover{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    opacity: 0;
+    transition: 1.5s;
+}
+
+.song-wrapper{
+    position: absolute;
+    transform: translateX(18vw);
+    display: flex;
+    justify-content: center;
+    width: 40vw;
+    height: 60vh;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    top: 25vh;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.song-container{
+    display: block;
+    width: 97%;
+    height: 10000px;
+    margin-top: 20px;
+    transform: translateY(0px);
+    transition: 1s;
+}
+
+.song-container .song-item{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background: rgba(255,255,255,0.3);
+    margin-bottom: 15px;
+    border-radius: 15px;
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0));
+}
+
+.song-container .song-item.active{
+    background: rgba(255,255,255,1);
+    filter: drop-shadow(0 0 0.7rem rgba(0,0,0,0.7));
+}
+
+.song-container .song-item .title{
+    display: block;
+    width: 60%;
+    padding-left: 20px;
+    font-size: 1.75rem;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.music-menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200vh;
+    transform: translate(0px, 0px);
+    transition: transform 2s;
+}
+
+#the-menu{
+    opacity: 0;
+    transition: 2s;
+}
+
+.right-arrow{
+    position: absolute;
+    right: 2%;
+    font-size: 10rem;
+    color: white;
+}
+
+.next-list{
+    position: absolute;
+    bottom: 2%;
+    font-size: 5rem;
+    color: white;
+}
+
+.previous-list{
+    position: absolute;
+    top: 2%;
+    font-size: 5rem;
+    color: white;
+}
+
+.music-menu .album-title-page, .artist-title-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
